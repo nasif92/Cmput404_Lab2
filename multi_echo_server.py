@@ -1,5 +1,4 @@
-from cgitb import handler
-import socket, time, sys
+import socket
 from multiprocessing import Process
 
 # define global addresses and buffer size
@@ -14,17 +13,19 @@ def main():
 
 		#QUESTION 3
 		s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+		#bind socket to address
 		s.bind((HOST, PORT))
+		#set to listening mode
 		s.listen(2)
-
+		
 		while True:
 			conn, addr = s.accept()
 			p = Process(target=handle_echo, args=(addr, conn))
 			p.daemon = True
 			p.start()
 			print("Started process", p)
-	
-# echo connections back to client
+
+# handle echo connection back to client
 def handle_echo(addr, conn):
 	print("Connected by", addr)
 
@@ -34,4 +35,4 @@ def handle_echo(addr, conn):
 	conn.close()
 
 if __name__ == "__main__":
-    main()
+	main()
