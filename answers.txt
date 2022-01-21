@@ -16,4 +16,4 @@ Question 5: What is returned by recv() from the server after it is done sending 
 Answer: The response from google.com of an empty byte string is returned by recv()
 
 Question 6: Provide a link to your code on GitHub.
-Answer: 
+Answer: https://github.com/nasif92/Cmput404_Lab2
